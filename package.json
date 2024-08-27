@@ -2,7 +2,7 @@
   "name": "ec2serverbluegreendeploymentgroup",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wladyslaw/ec2serverbluegreendeploymentgroup.git"
+    "url": "https://github.com/otocolobus-com/ec2serverbluegreendeploymentgroup.git"
   },
   "scripts": {
     "build": "npx projen build",
@@ -29,16 +29,16 @@
     "projen": "npx projen"
   },
   "author": {
-    "name": "Władysław Czyżewski",
-    "email": "wladyslaw@czyzewski.me",
+    "name": "OtoColobus Sp. z o.o.",
+    "email": "start@otocolobus.com",
     "organization": false
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
-    "@types/node": "^18",
+    "@types/node": "^20",
     "@typescript-eslint/eslint-plugin": "^7",
     "@typescript-eslint/parser": "^7",
-    "aws-cdk-lib": "2.1.0",
+    "aws-cdk-lib": "2.154.1",
     "constructs": "10.0.5",
     "eslint": "^8",
     "eslint-import-resolver-typescript": "^3.6.1",
@@ -57,12 +57,15 @@
     "typescript": "^5.5.4"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.1.0",
+    "aws-cdk-lib": "^2.154.1",
     "constructs": "^10.0.5"
   },
   "keywords": [
     "cdk"
   ],
+  "engines": {
+    "node": ">= 20.0.0"
+  },
   "main": "lib/index.js",
   "license": "Apache-2.0",
   "publishConfig": {
