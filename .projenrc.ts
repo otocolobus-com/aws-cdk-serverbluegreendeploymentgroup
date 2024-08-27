@@ -1,4 +1,5 @@
 import { awscdk } from 'projen';
+import { NpmAccess } from 'projen/lib/javascript';
 const project = new awscdk.AwsCdkConstructLibrary({
   name: '@otocolobus/aws-cdk-serverbluegreendeploymentgroup',
   license: 'MIT',
@@ -24,5 +25,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
   ],
   release: true,
   releaseToNpm: true,
+  npmAccess: NpmAccess.PUBLIC,
 });
 project.synth();
