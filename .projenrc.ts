@@ -1,7 +1,8 @@
 import { awscdk } from 'projen';
 const project = new awscdk.AwsCdkConstructLibrary({
-  name: 'ec2serverbluegreendeploymentgroup',
-  author: 'OtoColobus Sp. z o.o.',
+  name: '@otocolobus/aws-cdk-serverbluegreendeploymentgroup',
+  license: 'MIT',
+  author: 'Otocolobus Sp. z o.o.',
   authorAddress: 'start@otocolobus.com',
   cdkVersion: '2.154.1',
   defaultReleaseBranch: 'main',
@@ -9,7 +10,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   minNodeVersion: '20.0.0',
   projenrcTs: true,
   repositoryUrl:
-    'https://github.com/otocolobus-com/ec2serverbluegreendeploymentgroup.git',
+    'https://github.com/otocolobus-com/aws-cdk-serverbluegreendeploymentgroup.git',
 
   // deps: [],                /* Runtime dependencies of this module. */
   // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
