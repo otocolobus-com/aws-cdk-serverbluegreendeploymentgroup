@@ -2,7 +2,7 @@
 
 This construct creates a CodeDeploy Deployment Group for an EC2/On-Premises Deployment Group using the Blue/Green Deployment configuration.
 
-**WARNING**: At the moment, this construct only supports the EC2 deployments with Auto Scaling Groups. The construct does not support neither the EC2 tag-based deployments nor the On-Premises tag-based deployments.
+**ATTENTION**: At the moment, this construct only supports the EC2 deployments with Auto Scaling Groups. The construct does not support neither the EC2 tag-based deployments nor the On-Premises tag-based deployments.
 
 ## Overview
 
@@ -18,8 +18,16 @@ You can configure the deployment to automatically rollback if the deployment fai
 
 ## Installation
 
+NPM package: https://www.npmjs.com/package/@otocolobus/aws-cdk-serverbluegreendeploymentgroup
+
 ```bash
-npm install ec2serverbluegreendeploymentgroup
+npm install @otocolobus/aws-cdk-serverbluegreendeploymentgroup
+```
+
+PyPI package: https://pypi.org/project/aws-cdk-serverbluegreendeploymentgroup/
+
+```bash
+pip install aws-cdk-serverbluegreendeploymentgroup
 ```
 
 ## Usage

@@ -14,6 +14,8 @@ export interface ServerBlueGreenDeploymentGroupProps
   extends codedeploy.ServerDeploymentGroupProps {
   /**
    * How to provision the green fleet.
+   *
+   * @default COPY_AUTO_SCALING_GROUP
    */
   readonly greenFleetProvisionOption?:
   | 'COPY_AUTO_SCALING_GROUP'
@@ -21,23 +23,30 @@ export interface ServerBlueGreenDeploymentGroupProps
 
   /**
    * How to reroute traffic to the green fleet.
+   *
+   * @default AUTOMATICALLY
    */
   readonly trafficRoutingConfig?: 'AUTOMATICALLY' | 'MANUALLY';
 
   /**
    * How long to wait for the manual traffic rerouting to complete.
+   *
+   * @default - if `trafficRoutingConfig` is `MANUALLY`, this is required
+   * - otherwise, this is ignored.
    */
   readonly manualTrafficRoutingTimeout?: Duration;
 
   /**
    * The action to take on instances in the original environment after a successful blue/green deployment.
+   *
+   * @default TERMINATE
    */
   readonly originalInstancePolicy?: 'TERMINATE' | 'KEEP_ALIVE';
 
   /**
    * How long to wait before terminating the original instances.
    *
-   * @default - if `originalInstancePolicy` is `TERMINATE`, this is required and the default value is 5 minutes.
+   * @default - if `originalInstancePolicy` is `TERMINATE`, this is required
    * - otherwise, this is ignored.
    */
   readonly terminateOriginalInstancesTimeout?: Duration;

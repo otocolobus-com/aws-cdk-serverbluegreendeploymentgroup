@@ -525,6 +525,7 @@ public readonly greenFleetProvisionOption: string;
 ```
 
 - *Type:* string
+- *Default:* COPY_AUTO_SCALING_GROUP
 
 How to provision the green fleet.
 
@@ -537,6 +538,7 @@ public readonly manualTrafficRoutingTimeout: Duration;
 ```
 
 - *Type:* aws-cdk-lib.Duration
+- *Default:* if `trafficRoutingConfig` is `MANUALLY`, this is required - otherwise, this is ignored.
 
 How long to wait for the manual traffic rerouting to complete.
 
@@ -549,6 +551,7 @@ public readonly originalInstancePolicy: string;
 ```
 
 - *Type:* string
+- *Default:* TERMINATE
 
 The action to take on instances in the original environment after a successful blue/green deployment.
 
@@ -561,7 +564,7 @@ public readonly terminateOriginalInstancesTimeout: Duration;
 ```
 
 - *Type:* aws-cdk-lib.Duration
-- *Default:* if `originalInstancePolicy` is `TERMINATE`, this is required and the default value is 5 minutes. - otherwise, this is ignored.
+- *Default:* if `originalInstancePolicy` is `TERMINATE`, this is required - otherwise, this is ignored.
 
 How long to wait before terminating the original instances.
 
@@ -574,6 +577,7 @@ public readonly trafficRoutingConfig: string;
 ```
 
 - *Type:* string
+- *Default:* AUTOMATICALLY
 
 How to reroute traffic to the green fleet.
 

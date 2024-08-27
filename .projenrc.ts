@@ -26,5 +26,9 @@ const project = new awscdk.AwsCdkConstructLibrary({
   release: true,
   releaseToNpm: true,
   npmAccess: NpmAccess.PUBLIC,
+  publishToPypi: {
+    distName: 'aws-cdk-serverbluegreendeploymentgroup',
+    module: 'aws_cdk_serverbluegreendeploymentgroup',
+  },
 });
 project.synth();
