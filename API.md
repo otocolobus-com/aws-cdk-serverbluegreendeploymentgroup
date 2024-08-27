@@ -291,10 +291,10 @@ const serverBlueGreenDeploymentGroupProps: ServerBlueGreenDeploymentGroupProps =
 | <code><a href="#ec2serverbluegreendeploymentgroup.ServerBlueGreenDeploymentGroupProps.property.role">role</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | The service Role of this Deployment Group. |
 | <code><a href="#ec2serverbluegreendeploymentgroup.ServerBlueGreenDeploymentGroupProps.property.terminationHook">terminationHook</a></code> | <code>boolean</code> | Indicates whether the deployment group was configured to have CodeDeploy install a termination hook into an Auto Scaling group. |
 | <code><a href="#ec2serverbluegreendeploymentgroup.ServerBlueGreenDeploymentGroupProps.property.greenFleetProvisionOption">greenFleetProvisionOption</a></code> | <code>string</code> | How to provision the green fleet. |
-| <code><a href="#ec2serverbluegreendeploymentgroup.ServerBlueGreenDeploymentGroupProps.property.originalInstancePolicy">originalInstancePolicy</a></code> | <code>string</code> | The action to take on instances in the original environment after a successful blue/green deployment. |
-| <code><a href="#ec2serverbluegreendeploymentgroup.ServerBlueGreenDeploymentGroupProps.property.trafficRoutingConfig">trafficRoutingConfig</a></code> | <code>string</code> | How to reroute traffic to the green fleet. |
 | <code><a href="#ec2serverbluegreendeploymentgroup.ServerBlueGreenDeploymentGroupProps.property.manualTrafficRoutingTimeout">manualTrafficRoutingTimeout</a></code> | <code>aws-cdk-lib.Duration</code> | How long to wait for the manual traffic rerouting to complete. |
+| <code><a href="#ec2serverbluegreendeploymentgroup.ServerBlueGreenDeploymentGroupProps.property.originalInstancePolicy">originalInstancePolicy</a></code> | <code>string</code> | The action to take on instances in the original environment after a successful blue/green deployment. |
 | <code><a href="#ec2serverbluegreendeploymentgroup.ServerBlueGreenDeploymentGroupProps.property.terminateOriginalInstancesTimeout">terminateOriginalInstancesTimeout</a></code> | <code>aws-cdk-lib.Duration</code> | How long to wait before terminating the original instances. |
+| <code><a href="#ec2serverbluegreendeploymentgroup.ServerBlueGreenDeploymentGroupProps.property.trafficRoutingConfig">trafficRoutingConfig</a></code> | <code>string</code> | How to reroute traffic to the green fleet. |
 
 ---
 
@@ -518,7 +518,7 @@ Indicates whether the deployment group was configured to have CodeDeploy install
 
 ---
 
-##### `greenFleetProvisionOption`<sup>Required</sup> <a name="greenFleetProvisionOption" id="ec2serverbluegreendeploymentgroup.ServerBlueGreenDeploymentGroupProps.property.greenFleetProvisionOption"></a>
+##### `greenFleetProvisionOption`<sup>Optional</sup> <a name="greenFleetProvisionOption" id="ec2serverbluegreendeploymentgroup.ServerBlueGreenDeploymentGroupProps.property.greenFleetProvisionOption"></a>
 
 ```typescript
 public readonly greenFleetProvisionOption: string;
@@ -527,30 +527,6 @@ public readonly greenFleetProvisionOption: string;
 - *Type:* string
 
 How to provision the green fleet.
-
----
-
-##### `originalInstancePolicy`<sup>Required</sup> <a name="originalInstancePolicy" id="ec2serverbluegreendeploymentgroup.ServerBlueGreenDeploymentGroupProps.property.originalInstancePolicy"></a>
-
-```typescript
-public readonly originalInstancePolicy: string;
-```
-
-- *Type:* string
-
-The action to take on instances in the original environment after a successful blue/green deployment.
-
----
-
-##### `trafficRoutingConfig`<sup>Required</sup> <a name="trafficRoutingConfig" id="ec2serverbluegreendeploymentgroup.ServerBlueGreenDeploymentGroupProps.property.trafficRoutingConfig"></a>
-
-```typescript
-public readonly trafficRoutingConfig: string;
-```
-
-- *Type:* string
-
-How to reroute traffic to the green fleet.
 
 ---
 
@@ -566,6 +542,18 @@ How long to wait for the manual traffic rerouting to complete.
 
 ---
 
+##### `originalInstancePolicy`<sup>Optional</sup> <a name="originalInstancePolicy" id="ec2serverbluegreendeploymentgroup.ServerBlueGreenDeploymentGroupProps.property.originalInstancePolicy"></a>
+
+```typescript
+public readonly originalInstancePolicy: string;
+```
+
+- *Type:* string
+
+The action to take on instances in the original environment after a successful blue/green deployment.
+
+---
+
 ##### `terminateOriginalInstancesTimeout`<sup>Optional</sup> <a name="terminateOriginalInstancesTimeout" id="ec2serverbluegreendeploymentgroup.ServerBlueGreenDeploymentGroupProps.property.terminateOriginalInstancesTimeout"></a>
 
 ```typescript
@@ -576,6 +564,18 @@ public readonly terminateOriginalInstancesTimeout: Duration;
 - *Default:* if `originalInstancePolicy` is `TERMINATE`, this is required and the default value is 5 minutes. - otherwise, this is ignored.
 
 How long to wait before terminating the original instances.
+
+---
+
+##### `trafficRoutingConfig`<sup>Optional</sup> <a name="trafficRoutingConfig" id="ec2serverbluegreendeploymentgroup.ServerBlueGreenDeploymentGroupProps.property.trafficRoutingConfig"></a>
+
+```typescript
+public readonly trafficRoutingConfig: string;
+```
+
+- *Type:* string
+
+How to reroute traffic to the green fleet.
 
 ---
 
