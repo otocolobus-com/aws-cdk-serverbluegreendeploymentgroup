@@ -31,7 +31,7 @@
   "author": {
     "name": "Otocolobus Sp. z o.o.",
     "email": "start@otocolobus.com",
-    "organization": false
+    "organization": true
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
@@ -61,7 +61,13 @@
     "constructs": "^10.0.5"
   },
   "keywords": [
-    "cdk"
+    "aws",
+    "aws-cdk",
+    "awscdk",
+    "blue-green",
+    "cdk",
+    "deployment",
+    "ec2"
   ],
   "engines": {
     "node": ">= 20.0.0"

@@ -4,6 +4,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
   license: 'MIT',
   author: 'Otocolobus Sp. z o.o.',
   authorAddress: 'start@otocolobus.com',
+  authorOrganization: true,
+  majorVersion: 1,
   cdkVersion: '2.154.1',
   defaultReleaseBranch: 'main',
   jsiiVersion: '~5.4.0',
@@ -11,10 +13,16 @@ const project = new awscdk.AwsCdkConstructLibrary({
   projenrcTs: true,
   repositoryUrl:
     'https://github.com/otocolobus-com/aws-cdk-serverbluegreendeploymentgroup.git',
-
-  // deps: [],                /* Runtime dependencies of this module. */
-  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
-  // devDeps: [],             /* Build dependencies for this module. */
-  // packageName: undefined,  /* The "name" in package.json. */
+  keywords: [
+    'aws',
+    'cdk',
+    'awscdk',
+    'aws-cdk',
+    'ec2',
+    'blue-green',
+    'deployment',
+  ],
+  release: true,
+  releaseToNpm: true,
 });
 project.synth();

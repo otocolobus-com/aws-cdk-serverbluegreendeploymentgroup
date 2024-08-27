@@ -1,4 +1,4 @@
-# EC2/Server Blue/Green Deployment Group construct
+# EC2/On-Premise Server Blue/Green Deployment Group construct
 
 This construct creates a CodeDeploy Deployment Group for an EC2/On-Premises Deployment Group using the Blue/Green Deployment configuration.
 
@@ -25,7 +25,7 @@ npm install ec2serverbluegreendeploymentgroup
 ## Usage
 
 ```ts
-import { ServerBlueGreenDeploymentGroup } from "ec2serverbluegreendeploymentgroup";
+import { ServerBlueGreenDeploymentGroup } from "@otocolobus/aws-cdk-serverbluegreendeploymentgroup";
 
 class MyStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
