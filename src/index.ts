@@ -15,14 +15,14 @@ export interface ServerBlueGreenDeploymentGroupProps
   /**
    * How to provision the green fleet.
    */
-  readonly greenFleetProvisionOption:
+  readonly greenFleetProvisionOption?:
   | 'COPY_AUTO_SCALING_GROUP'
   | 'DISCOVER_EXISTING';
 
   /**
    * How to reroute traffic to the green fleet.
    */
-  readonly trafficRoutingConfig: 'AUTOMATICALLY' | 'MANUALLY';
+  readonly trafficRoutingConfig?: 'AUTOMATICALLY' | 'MANUALLY';
 
   /**
    * How long to wait for the manual traffic rerouting to complete.
@@ -32,7 +32,7 @@ export interface ServerBlueGreenDeploymentGroupProps
   /**
    * The action to take on instances in the original environment after a successful blue/green deployment.
    */
-  readonly originalInstancePolicy: 'TERMINATE' | 'KEEP_ALIVE';
+  readonly originalInstancePolicy?: 'TERMINATE' | 'KEEP_ALIVE';
 
   /**
    * How long to wait before terminating the original instances.
@@ -115,6 +115,8 @@ export class ServerBlueGreenDeploymentGroup
         ? [props.loadBalancer]
         : undefined;
 
+    const trafficRoutingConfig = props.trafficRoutingConfig ?? 'AUTOMATICALLY';
+
     const parameters = {
       applicationName: application.applicationName,
       serviceRoleArn: role.roleArn,
@@ -145,7 +147,7 @@ export class ServerBlueGreenDeploymentGroup
       blueGreenDeploymentConfiguration: {
         deploymentReadyOption: {
           actionOnTimeout:
-            props.trafficRoutingConfig === 'AUTOMATICALLY'
+            trafficRoutingConfig === 'AUTOMATICALLY'
               ? 'CONTINUE_DEPLOYMENT'
               : 'STOP_DEPLOYMENT',
           waitTimeInMinutes: props.manualTrafficRoutingTimeout
@@ -153,10 +155,10 @@ export class ServerBlueGreenDeploymentGroup
             : undefined,
         },
         greenFleetProvisioningOption: {
-          action: props.greenFleetProvisionOption,
+          action: props.greenFleetProvisionOption ?? 'COPY_AUTO_SCALING_GROUP',
         },
         terminateBlueInstancesOnDeploymentSuccess: {
-          action: props.originalInstancePolicy,
+          action: props.originalInstancePolicy ?? 'TERMINATE',
           terminationWaitTimeInMinutes: props.terminateOriginalInstancesTimeout
             ? props.terminateOriginalInstancesTimeout.toMinutes()
             : undefined,
@@ -251,7 +253,7 @@ function validateProps(props: ServerBlueGreenDeploymentGroupProps) {
   }
 
   if (
-    props.originalInstancePolicy === 'TERMINATE' &&
+    (props.originalInstancePolicy ?? 'TERMINATE') === 'TERMINATE' &&
     !props.terminateOriginalInstancesTimeout
   ) {
     throw new Error(

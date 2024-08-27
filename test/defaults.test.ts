@@ -1,4 +1,4 @@
-import { App } from 'aws-cdk-lib';
+import { App, Duration } from 'aws-cdk-lib';
 import { Match, Template } from 'aws-cdk-lib/assertions';
 
 import { TestStack } from './testStack';
@@ -92,6 +92,106 @@ describe('EC2/On-premise Server Blue Green Deployment Group defaults', () => {
     // THEN
     const assert = Template.fromStack(stack);
     assert.resourceCountIs('Custom::ServerBlueGreenDeploymentGroup', 1);
+  });
+
+  it('should default green fleet provision option to COPY_AUTO_SCALING_GROUP', () => {
+    const app = new App();
+    // WHEN
+    const stack = new TestStack(app, 'TestStack', undefined, {
+      greenFleetProvisionOption: undefined,
+    });
+    // THEN
+    const assert = Template.fromStack(stack);
+    assert.resourceCountIs('Custom::ServerBlueGreenDeploymentGroup', 1);
+    const assertProperties = {
+      'Fn::Join': Match.arrayEquals([
+        '',
+        [
+          Match.anyValue(),
+          Match.anyValue(),
+          Match.anyValue(),
+          Match.anyValue(),
+          Match.anyValue(),
+          Match.anyValue(),
+          Match.stringLikeRegexp(
+            '"greenFleetProvisioningOption":{"action":"COPY_AUTO_SCALING_GROUP"}',
+          ),
+          Match.anyValue(),
+          Match.anyValue(),
+        ],
+      ]),
+    };
+    assert.hasResourceProperties('Custom::ServerBlueGreenDeploymentGroup', {
+      Create: assertProperties,
+      Update: assertProperties,
+    });
+  });
+
+  it('should default traffic routing configuration to AUTOMATICALLY', () => {
+    const app = new App();
+    // WHEN
+    const stack = new TestStack(app, 'TestStack', undefined, {
+      trafficRoutingConfig: undefined,
+    });
+    // THEN
+    const assert = Template.fromStack(stack);
+    assert.resourceCountIs('Custom::ServerBlueGreenDeploymentGroup', 1);
+    const assertProperties = {
+      'Fn::Join': Match.arrayEquals([
+        '',
+        [
+          Match.anyValue(),
+          Match.anyValue(),
+          Match.anyValue(),
+          Match.anyValue(),
+          Match.anyValue(),
+          Match.anyValue(),
+          Match.stringLikeRegexp(
+            '"deploymentReadyOption":{"actionOnTimeout":"CONTINUE_DEPLOYMENT"}',
+          ),
+          Match.anyValue(),
+          Match.anyValue(),
+        ],
+      ]),
+    };
+    assert.hasResourceProperties('Custom::ServerBlueGreenDeploymentGroup', {
+      Create: assertProperties,
+      Update: assertProperties,
+    });
+  });
+
+  it('should default original instance policy to TERMINATE', () => {
+    const app = new App();
+    // WHEN
+    const stack = new TestStack(app, 'TestStack', undefined, {
+      originalInstancePolicy: undefined,
+      terminateOriginalInstancesTimeout: Duration.minutes(15),
+    });
+    // THEN
+    const assert = Template.fromStack(stack);
+    assert.resourceCountIs('Custom::ServerBlueGreenDeploymentGroup', 1);
+    const assertProperties = {
+      'Fn::Join': Match.arrayEquals([
+        '',
+        [
+          Match.anyValue(),
+          Match.anyValue(),
+          Match.anyValue(),
+          Match.anyValue(),
+          Match.anyValue(),
+          Match.anyValue(),
+          Match.stringLikeRegexp(
+            '"terminateBlueInstancesOnDeploymentSuccess":{"action":"TERMINATE","terminationWaitTimeInMinutes":15}}',
+          ),
+          Match.anyValue(),
+          Match.anyValue(),
+        ],
+      ]),
+    };
+    assert.hasResourceProperties('Custom::ServerBlueGreenDeploymentGroup', {
+      Create: assertProperties,
+      Update: assertProperties,
+    });
   });
 
   it('should disable auto rollback if not provided', () => {
