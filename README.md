@@ -1,8 +1,19 @@
 # EC2/On-Premise Server Blue/Green Deployment Group construct
 
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/otocolobus-com/aws-cdk-serverbluegreendeploymentgroup/.github%2Fworkflows%2Frelease.yml)![NPM Downloads](https://img.shields.io/npm/d18m/%40otocolobus%2Faws-cdk-serverbluegreendeploymentgroup)![NPM License](https://img.shields.io/npm/l/%40otocolobus%2Faws-cdk-serverbluegreendeploymentgroup)
+
 This construct creates a CodeDeploy Deployment Group for an EC2/On-Premises Deployment Group using the Blue/Green Deployment configuration.
 
 **ATTENTION**: At the moment, this construct only supports the EC2 deployments with Auto Scaling Groups. The construct does not support neither the EC2 tag-based deployments nor the On-Premises tag-based deployments.
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Limitations](#limitations)
+- [Author](#author)
+- [License](#license)
 
 ## Overview
 
@@ -103,8 +114,13 @@ class MyStack extends Stack {
 ## Limitations
 
 Currently, it is not possible to update the Deployment Group name after the deployment group is created.
+
 Currently, it is not possible to create a Deployment Group for an EC2 or On-Premises deployment with the tag-based configuration.
 
 ## Author
 
 [Władysław Czyżewski](https://github.com/wladyslawczyzewski) (https://otocolobus.com)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
