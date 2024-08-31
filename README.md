@@ -1,6 +1,8 @@
 # EC2/On-Premise Server Blue/Green Deployment Group construct
 
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/otocolobus-com/aws-cdk-serverbluegreendeploymentgroup/.github%2Fworkflows%2Frelease.yml)![NPM Downloads](https://img.shields.io/npm/d18m/%40otocolobus%2Faws-cdk-serverbluegreendeploymentgroup)![NPM License](https://img.shields.io/npm/l/%40otocolobus%2Faws-cdk-serverbluegreendeploymentgroup)
+[![View on Construct Hub](https://constructs.dev/badge?package=%40otocolobus%2Faws-cdk-serverbluegreendeploymentgroup)](https://constructs.dev/packages/@otocolobus/aws-cdk-serverbluegreendeploymentgroup)
+
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/otocolobus-com/aws-cdk-serverbluegreendeploymentgroup/.github%2Fworkflows%2Frelease.yml) ![NPM Downloads](https://img.shields.io/npm/d18m/%40otocolobus%2Faws-cdk-serverbluegreendeploymentgroup) ![NPM License](https://img.shields.io/npm/l/%40otocolobus%2Faws-cdk-serverbluegreendeploymentgroup)
 
 This construct creates a CodeDeploy Deployment Group for an EC2/On-Premises Deployment Group using the Blue/Green Deployment configuration.
 
